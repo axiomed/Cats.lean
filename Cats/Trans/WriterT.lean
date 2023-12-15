@@ -62,4 +62,4 @@ def WriterT.writer [Monoid w] [inst: Monad m] (elem: a × w) : WriterT w m a :=
 def WriterT.tell [Monoid α] [Monad m] (a : α) : WriterT α m Unit :=
   WriterT.writer ((), a)
 
-end WriterT
+end Cats.Trans
