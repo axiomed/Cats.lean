@@ -4,6 +4,8 @@ import Cats.Kernel
 
 open Cats.Kernel
 
+namespace Cats.Trans
+
 /--
   The `WriterT` monad transformer.
 
@@ -22,8 +24,6 @@ def WriterT.run (x: WriterT ρ m α) (r: ρ) : m (ρ × α) :=
 @[always_inline]
 def WriterT.exec [Functor m] (x: WriterT ρ m α) (r: ρ) : m ρ :=
   Prod.fst <$> x r
-
-namespace WriterT
 
 @[always_inline]
 instance [Monad m] : MonadLift m (WriterT ρ m) where
