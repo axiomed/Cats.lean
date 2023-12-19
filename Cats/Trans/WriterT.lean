@@ -56,7 +56,7 @@ instance [inst: Monad m] : Monad (WriterT ρ m) where
 
 def WriterT.writer [Monoid w] [inst: Monad m] (elem: a × w) : WriterT w m a :=
   fun ρ => do
-    let wt := Semigroup.concat elem.snd ρ
+    let wt := Semigroup.concat ρ elem.snd
     inst.pure (wt, elem.fst)
 
 def WriterT.tell [Monoid α] [Monad m] (a : α) : WriterT α m Unit :=
